@@ -33,8 +33,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
          db=FirebaseFirestore.getInstance();
          textDisplay=findViewById(R.id.text);
-
+addNewContact();
     }
+
     private void addNewContact(){
         Map<String,Object> newContact=new HashMap<>();
         newContact.put(NAME_KEY,"John");
@@ -55,9 +56,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-
-
     }
+
     private void ReadSingleContact(){
         DocumentReference user=db.collection("PhoneBook").document("Contact");
         user.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-    /*
+
     private void UpdateData(){
         DocumentReference contact=db.collection("PhoneBook").document("Contact");
         contact.update("NAME_KEY","Kenny");
@@ -95,5 +95,5 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-    }*/
+    }
 }
